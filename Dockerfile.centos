@@ -1,0 +1,12 @@
+# Dockerfile.centos-stream
+FROM centos:7
+
+# 必要に応じてパッケージをインストール
+RUN yum -y update && yum install -y \
+  curl \
+  vim \
+  git \
+  && yum clean all
+
+# コンテナが起動時に実行するコマンド
+CMD ["bash"]
