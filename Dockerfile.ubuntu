@@ -1,0 +1,12 @@
+# Dockerfile.ubuntu
+FROM ubuntu:latest
+
+# 必要に応じてパッケージをインストール
+RUN apt-get update && apt-get install -y \
+  curl \
+  vim \
+  git \
+  && rm -rf /var/lib/apt/lists/*
+
+# コンテナが起動時に実行するコマンド
+CMD ["bash"]
