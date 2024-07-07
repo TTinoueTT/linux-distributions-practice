@@ -56,13 +56,13 @@ CMD ["bash"]
 #### Ubuntuイメージをビルド
 
 ```sh
-docker build -f Dockerfile.ubuntu -t my-ubuntu-image .
+docker build -f Dockerfile.ubuntu -t my-ubuntu .
 ```
 
 #### CentOSイメージをビルド
 
 ```sh
-docker build -f Dockerfile.centos -t my-centos-image .
+docker build -f Dockerfile.centos -t my-centos .
 ```
 
 ### 4. コンテナを起動する
@@ -72,13 +72,13 @@ docker build -f Dockerfile.centos -t my-centos-image .
 #### Ubuntuコンテナをイメージから起動
 
 ```sh
-docker run -it --name my-ubuntu-container my-ubuntu-image
+docker run -it --name my-ubuntu-container my-ubuntu
 ```
 
 #### CentOSコンテナをイメージから起動
 
 ```sh
-docker run -it --name my-centos-container my-centos-image
+docker run -it --name my-centos-container my-centos
 ```
 
 ### 5. コンテナにアクセスする
@@ -97,6 +97,20 @@ docker exec -it my-ubuntu-container bash
 docker exec -it my-centos-container bash
 ```
 
-### まとめ
+## docker compose コマンドで起動したコンテナにログイン
 
-これで、Ubuntuを元にしたコンテナとCentOSを元にしたコンテナをそれぞれ作成し、起動することができました。これらのコンテナ内で必要な操作を行うことで、仮想環境を簡単に管理できます。
+コンテナにログインするためには、`docker compose exec` コマンドを使用します。以下に、それぞれのコンテナにログインするためのコマンドを示します。
+
+### Ubuntu コンテナにログイン
+
+```bash
+docker compose exec my-ubuntu bash
+```
+
+### CentOS コンテナにログイン
+
+```bash
+docker compose exec my-centos bash
+```
+
+これらのコマンドを実行すると、それぞれのコンテナのシェルにアクセスすることができます。コンテナ名は `docker-compose.yml` ファイルで指定した `container_name` に基づいています。

@@ -2,11 +2,27 @@
 FROM centos:7
 
 # 必要に応じてパッケージをインストール
-RUN yum -y update && yum install -y \
+RUN yum -y update && \
+  yum install -y \
+  httpd \
   curl \
   vim \
-  git \
-  && yum clean all
+  iproute \
+  mlocate && \
+  yum clean all && \
+  updatedb && \
+  rm -rf /var/cache/yum
+
+# RUN updatedb
+# 作業ディレクトリを設定
+WORKDIR /var/www
+
+# Apache の設定ファイルをコピー（必要に応じてカスタマイズ）
+COPY httpd.conf /etc/httpd/conf/httpd.conf
+
+# ポート80を公開
+EXPOSE 81
 
 # コンテナが起動時に実行するコマンド
-CMD ["bash"]
+# CMD ["bash"]
+CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]

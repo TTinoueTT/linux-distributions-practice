@@ -1,0 +1,35 @@
+version: "3.3"
+
+services:
+  ubuntu:
+    container_name: my-ubuntu
+    build:
+      context: .
+      dockerfile: Dockerfile.ubuntu
+    ports:
+      - 95:80
+    volumes:
+      - ./www:/var/www
+    networks:
+      web_segment:
+        ipv4_address: 172.200.0.2
+
+  centos:
+    container_name: my-centos
+    build:
+      context: .
+      dockerfile: Dockerfile.centos
+    ports:
+      - 94:81
+    volumes:
+      - ./www:/var/www
+    networks:
+      web_segment:
+        ipv4_address: 172.200.0.3
+
+networks:
+  web_segment:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.200.0.0/24
