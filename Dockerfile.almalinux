@@ -1,0 +1,16 @@
+# 基本イメージとして AlmaLinux を使用
+FROM almalinux:latest
+
+# 必要なパッケージのインストール
+RUN dnf -y update && \
+  dnf -y install httpd && \
+  dnf clean all
+
+# Apache の設定
+# COPY ./index.html /var/www/html/
+
+# ポート82を公開
+EXPOSE 82
+
+# Apache をフォアグラウンドで実行
+CMD ["httpd", "-D", "FOREGROUND"]

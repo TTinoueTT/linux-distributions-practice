@@ -24,5 +24,5 @@ COPY httpd.conf /etc/httpd/conf/httpd.conf
 EXPOSE 81
 
 # コンテナが起動時に実行するコマンド
-# CMD ["bash"]
-CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+CMD ["bash"]
+# CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
