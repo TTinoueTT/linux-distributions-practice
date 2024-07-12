@@ -14,18 +14,34 @@ services:
       web_segment:
         ipv4_address: 172.200.0.2
 
-  centos:
-    container_name: my-centos
+  almalinux:
+    container_name: my-almalinux
     build:
       context: .
-      dockerfile: Dockerfile.centos
+      dockerfile: Dockerfile.almalinux
+      args: # build時の引数
+        USER_NAME: user # ここに一般ユーザー名を設定
+        USER_PASSWORD: password # ここにユーザーのパスワードを設定
     ports:
-      - 94:81
+      - 94:82
     volumes:
       - ./www:/var/www
+    tty: true
     networks:
       web_segment:
         ipv4_address: 172.200.0.3
+  # centos:
+  #   container_name: my-centos
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.centos
+  #   ports:
+  #     - 94:81
+  #   volumes:
+  #     - ./www:/var/www
+  #   networks:
+  #     web_segment:
+  #       ipv4_address: 172.200.0.3
 
 networks:
   web_segment:
