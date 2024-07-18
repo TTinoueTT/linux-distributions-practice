@@ -1,0 +1,24 @@
+example.net.    IN    NS       ns.example.net.
+example.net.    IN    MX    10 mx.example.net.
+example.net.    IN    MX    20 mx2.example.net.
+ns.example.net.    IN    A    192.0.2.26
+mx.example.net.    IN    A    192.0.2.27
+mx2.example.net.    IN    A    192.0.2.28
+www.example.net.    IN    CNAME    mx.example.net.
+
+
+$TTL 86400
+@ IN SOA ns root (
+    2024062301 
+    3600       
+    1800       
+    1209600    
+    86400 )    
+
+       IN    NS       ns
+       IN    MX  10   mx
+       IN    MX  20   mx2
+ns     IN    A        192.168.1.25
+mx     IN    A        192.168.1.26
+mx2    IN    A        192.168.1.27
+www    IN    CNAME    mx
