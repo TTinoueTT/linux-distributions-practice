@@ -24,7 +24,7 @@ ARG USER_PASSWORD
 
 # AlmaLinuxのパッケージ管理システムを更新し、必要なパッケージをインストール
 RUN dnf -y update && \
-  dnf -y install sudo passwd vim wget net-tools iputils iproute bash-completion && \
+  dnf -y install sudo passwd vim wget net-tools iputils iproute bash-completion man-db && \
   dnf clean all
 
 # 一般ユーザーの作成

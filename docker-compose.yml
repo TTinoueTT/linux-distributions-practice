@@ -6,6 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.ubuntu
+    hostname: ubuntu
     ports:
       - 95:80
     volumes:
@@ -22,6 +23,7 @@ services:
       args: # build時の引数
         USER_NAME: user # ここに一般ユーザー名を設定
         USER_PASSWORD: password # ここにユーザーのパスワードを設定
+    hostname: almalinux
     ports:
       - 94:82
     volumes:
